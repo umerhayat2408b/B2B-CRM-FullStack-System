@@ -1,0 +1,121 @@
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+
+        <h4>Company Management</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-3">
+
+                <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Name"
+                    [(ngModel)]="company.name">
+
+            </div>
+
+            <div class="col-md-3">
+
+                <input
+                    class="form-control"
+                    placeholder="Company"
+                    [(ngModel)]="company.companyname">
+
+            </div>
+
+            <div class="col-md-3">
+
+                <input
+                    class="form-control"
+                    placeholder="Email"
+                    [(ngModel)]="company.email">
+
+            </div>
+
+            <div class="col-md-3">
+
+                <button
+                    class="btn btn-success w-100"
+                    (click)="saveCompany()"
+                    [disabled]="!company.name || !company.companyname || !company.email">
+
+                    {{isEdit ? 'Update' : 'Save'}}
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Created</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @for(c of companies; track c.id){
+
+                <tr>
+
+                    <td>{{c.id}}</td>
+
+                    <td>{{c.name}}</td>
+
+                    <td>{{c.companyname}}</td>
+
+                    <td>{{c.email}}</td>
+
+                    <td>{{c.createdAt | date:'dd/MM/yyyy'}}</td>
+
+                    <td>
+
+                        <button
+                            class="btn btn-primary btn-sm me-2"
+                            (click)="editCompany(c)">
+
+                            Edit
+
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-sm"
+                            (click)="deleteCompany(c.id)">
+
+                            Delete
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

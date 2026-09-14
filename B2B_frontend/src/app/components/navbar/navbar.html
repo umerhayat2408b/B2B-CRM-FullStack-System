@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm px-4">
+
+  <div class="container-fluid">
+
+    <!-- Search -->
+    <form class="d-flex w-50">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Search companies, leads..."
+      >
+    </form>
+
+    <ul class="navbar-nav ms-auto align-items-center">
+
+      <!-- Notification -->
+      <li class="nav-item me-3">
+        <a class="nav-link fs-5" href="#">
+          <i class="bi bi-bell"></i>
+        </a>
+      </li>
+
+      <!-- Dark Mode -->
+      <li class="nav-item me-3">
+        <a class="nav-link fs-5" href="#">
+          <i class="bi bi-moon"></i>
+        </a>
+      </li>
+      <li>
+
+    <a routerLink="/company">
+
+        <i class="bi bi-buildings"></i>
+
+        Companies
+
+    </a>
+
+</li>    
+      <!-- User -->
+      <li class="nav-item dropdown">
+
+        <a
+          class="nav-link dropdown-toggle d-flex align-items-center"
+          href="#"
+          data-bs-toggle="dropdown"
+        >
+
+          <img
+            src="https://i.pravatar.cc/40"
+            class="rounded-circle me-2"
+            width="40"
+            height="40"
+          >
+
+          <span>Admin</span>
+
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+
+          <li>
+            <a class="dropdown-item" href="#">
+              Profile
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="#">
+              Settings
+            </a>
+          </li>
+
+          <li><hr class="dropdown-divider"></li>
+
+          <li>
+            <a class="dropdown-item text-danger" href="#">
+              Logout
+            </a>
+          </li>
+
+        </ul>
+
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>

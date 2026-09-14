@@ -1,0 +1,239 @@
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+        <h4>Leads Management</h4>
+    </div>
+
+    <div class="card-body">
+
+        @if (loading) {
+        <div class="spinner-border text-primary mb-3"></div>
+        }
+
+        <div class="row mb-3">
+
+            <div class="col-md-4">
+
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search Company..."
+                    [(ngModel)]="searchText">
+
+            </div>
+
+            <div class="col-md-8 text-end">
+
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    (click)="exportExcel()">
+
+                    <i class="bi bi-file-earmark-excel"></i>
+                    Export Excel
+
+                </button>
+
+            </div>
+
+        </div>
+        <table class="table table-bordered table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @for (lead of filteredLeads; track lead.id) {
+
+                <tr>
+
+                    <td>{{lead.id}}</td>
+
+                    <td>{{lead.name}}</td>
+
+                    <td>
+
+                        <a
+                            [href]="'mailto:'+lead.email">
+
+                            {{lead.email}}
+
+                        </a>
+
+                    </td>
+
+                    <td>{{lead.phone}}</td>
+
+                    <td>
+
+                        <a
+                            class="btn btn-success btn-sm"
+                            [href]="lead.website"
+                            target="_blank">
+
+                            <i class="bi bi-globe"></i>
+
+                            Open
+
+                        </a>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn btn-primary btn-sm me-2"
+                            (click)="editLead(lead)"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editModal">
+
+                            <i class="bi bi-pencil"></i>
+
+                        </button> <button
+                            class="btn btn-danger btn-sm"
+                            (click)="deleteLead(lead.id)">
+
+                            <i class="bi bi-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+        <div class="d-flex justify-content-between mt-3">
+
+            <button
+                class="btn btn-secondary"
+                (click)="previousPage()">
+
+                Previous
+
+            </button>
+
+            <span class="align-self-center">
+
+                Page {{currentPage}}
+
+            </span>
+
+            <button
+                class="btn btn-secondary"
+                (click)="nextPage()">
+
+                Next
+
+            </button>
+
+        </div>
+    </div>
+
+    <div
+        class="modal fade"
+        id="editModal"
+        tabindex="-1">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5>Edit Lead</h5>
+
+                    <button
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+
+                        <label>Company</label>
+
+                        <input
+                            class="form-control"
+                            [(ngModel)]="selectedLead.name">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Email</label>
+
+                        <input
+                            class="form-control"
+                            [(ngModel)]="selectedLead.email">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Phone</label>
+
+                        <input
+                            class="form-control"
+                            [(ngModel)]="selectedLead.phone">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Website</label>
+
+                        <input
+                            class="form-control"
+                            [(ngModel)]="selectedLead.website">
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                        Close
+
+                    </button>
+
+                    <button
+                        class="btn btn-success"
+                        (click)="saveLead()">
+
+                        Save
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

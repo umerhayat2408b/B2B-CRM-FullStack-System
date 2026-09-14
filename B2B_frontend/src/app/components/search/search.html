@@ -1,0 +1,116 @@
+<div class="container-fluid">
+
+    <h3 class="mb-4 fw-bold">
+
+        Search Companies
+
+    </h3>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-10">
+
+                    <input
+                        class="form-control form-control-lg"
+                        placeholder="Example : Hospitals in Lahore"
+                        [(ngModel)]="keyword"
+                        (keyup.enter)="search()">
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button
+                        class="btn btn-primary w-100"
+                        type="button"
+                        (click)="search()">
+
+                        Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="loading" class="mt-4">
+
+                <div class="spinner-border text-primary"></div>
+
+                <span class="ms-2">
+
+                    Searching...
+
+                </span>
+
+            </div>
+
+            <div
+                *ngIf="result"
+                class="mt-4">
+
+                <div class="alert alert-success">
+
+                    <h5>
+
+                        Total Websites Found :
+                        {{result.totalWebsitesFound}}
+
+                    </h5>
+
+                </div>
+
+                <table class="table table-bordered table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Website</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr
+                            *ngFor="let site of result.websitesList; let i=index">
+
+                            <td>
+
+                                {{i+1}}
+
+                            </td>
+
+                            <td>
+
+                                <a
+                                    [href]="site"
+                                    target="_blank">
+
+                                    {{site}}
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

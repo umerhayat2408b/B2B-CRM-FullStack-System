@@ -1,0 +1,12 @@
+.card{
+    border:none;
+}
+
+.table td,
+.table th{
+    vertical-align:middle;
+}
+
+input{
+    margin-bottom:10px;
+}

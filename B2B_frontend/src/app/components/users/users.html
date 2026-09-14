@@ -1,0 +1,102 @@
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+
+        <h4>User Management</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row mb-3">
+
+            <div class="col-md-5">
+
+                <input
+                class="form-control"
+                placeholder="User Name"
+                [(ngModel)]="user.name">
+
+            </div>
+
+            <div class="col-md-5">
+
+                <input
+                class="form-control"
+                placeholder="Email"
+                [(ngModel)]="user.email">
+
+            </div>
+
+            <div class="col-md-2">
+
+                <button
+                class="btn btn-success w-100"
+                (click)="saveUser()">
+
+                    {{isEdit ? 'Update' : 'Save'}}
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th width="170">Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @for(u of users; track u.id){
+
+                <tr>
+
+                    <td>{{u.id}}</td>
+
+                    <td>{{u.name}}</td>
+
+                    <td>{{u.email}}</td>
+
+                    <td>
+
+                        <button
+                        class="btn btn-primary btn-sm me-2"
+                        (click)="editUser(u)">
+
+                            Edit
+
+                        </button>
+
+                        <button
+                        class="btn btn-danger btn-sm"
+                        (click)="deleteUser(u.id)">
+
+                            Delete
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

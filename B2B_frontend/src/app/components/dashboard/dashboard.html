@@ -1,0 +1,222 @@
+<div class="container-fluid">
+
+    <h3 class="mb-4 fw-bold">
+        B2B Lead Extractor CRM Dashboard
+    </h3>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+
+            <div class="card bg-primary text-white shadow">
+
+                <div class="card-body">
+
+                    <h2>{{stats?.totalLeads}}</h2>
+
+                    <p class="mb-0">Total Leads</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-success text-white shadow">
+
+                <div class="card-body">
+
+                    <h2>{{stats?.totalEmails}}</h2>
+
+                    <p class="mb-0">Emails</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-warning shadow">
+
+                <div class="card-body">
+
+                    <h2>{{stats?.totalPhones}}</h2>
+
+                    <p class="mb-0">Phones</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-danger text-white shadow">
+
+                <div class="card-body">
+
+                    <h2>{{stats?.totalWebsites}}</h2>
+
+                    <p class="mb-0">Websites</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card mt-5 shadow">
+
+        <div class="card-header bg-dark text-white">
+
+            <h5 class="mb-0">Search Companies</h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-10">
+
+                    <input
+                        class="form-control"
+                        placeholder="Example: Gyms in Lahore"
+                        [(ngModel)]="keyword">
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button
+                        class="btn btn-primary w-100"
+                        (click)="search()">
+
+                        Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            @if(loading){
+
+                <div class="mt-3">
+
+                    <div class="spinner-border text-primary"></div>
+
+                    <span class="ms-2">Searching...</span>
+
+                </div>
+
+            }
+
+            @if(result){
+
+                <div class="alert alert-success mt-4">
+
+                    <strong>{{result.totalWebsitesFound}}</strong>
+
+                    Websites Found
+
+                </div>
+
+                <ul class="list-group">
+
+                    @for(site of result.websitesList; track site){
+
+                        <li class="list-group-item">
+
+                            <a
+                                [href]="site"
+                                target="_blank">
+
+                                {{site}}
+
+                            </a>
+
+                        </li>
+
+                    }
+
+                </ul>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+<div class="card shadow mt-5">
+
+    <div class="card-header bg-primary text-white">
+
+        <h5 class="mb-0">Recent Leads</h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @for(lead of recentLeads; track lead.id){
+
+                <tr>
+
+                    <td>{{lead.id}}</td>
+
+                    <td>{{lead.name}}</td>
+
+                    <td>{{lead.email}}</td>
+
+                    <td>{{lead.phone}}</td>
+
+                    <td>
+
+                        <a
+                        [href]="lead.website"
+                        target="_blank"
+                        class="btn btn-success btn-sm">
+
+                            Open
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

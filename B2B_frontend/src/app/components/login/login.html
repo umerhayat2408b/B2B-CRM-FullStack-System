@@ -1,0 +1,49 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+
+    <div class="card shadow p-4" style="width:400px;">
+
+        <h2 class="text-center mb-4">B2B CRM Login</h2>
+
+        <div class="mb-3">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                class="form-control"
+                [(ngModel)]="email"
+                placeholder="Enter Email">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="password"
+                placeholder="Enter Password">
+
+        </div>
+
+        <div
+            class="alert alert-danger"
+            *ngIf="errorMessage">
+
+            {{errorMessage}}
+
+        </div>
+
+        <button
+            class="btn btn-primary w-100"
+            (click)="login()">
+
+            Login
+
+        </button>
+
+    </div>
+
+</div>`x

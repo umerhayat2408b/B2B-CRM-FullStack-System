@@ -1,0 +1,15 @@
+.navbar{
+    height:70px;
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    padding:0 25px;
+}
+
+.form-control{
+    border-radius:25px;
+}
+
+img{
+    object-fit:cover;
+    border-radius:50%;
+}
